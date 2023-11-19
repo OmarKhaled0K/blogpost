@@ -5,7 +5,7 @@ from PIL import Image
 from openai import OpenAI
 import re
 import random
-api_key ='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'
+api_key ='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'
 client = OpenAI(api_key=api_key)
 API_URL1 = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
 API_URL2 = "https://api-inference.huggingface.co/models/cloudqi/cqi_text_to_image_pt_v0"
