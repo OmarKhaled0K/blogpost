@@ -115,8 +115,8 @@ def create_image(random_keyword):
 
 def random_size(size):
     # Generate random numbers for paragraphs and images
-    num_paragraphs = random.randint(2, size)  # Random number of paragraphs between 5 and 9
-    num_images = random.randint(1, min(num_paragraphs - 1, size))  # Random number of images, ensuring it's less than num_paragraphs and less than 10
+    num_paragraphs = random.randint(2, size)  # Random number of paragraphs between 2 and max_size
+    num_images = random.randint(1, min(num_paragraphs - 1, size))  # Random number of images, ensuring it's less than num_paragraphs and less than max_size
 
     # Generate random positions for images
     image_positions = random.sample(range(1, num_paragraphs), num_images)
