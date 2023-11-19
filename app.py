@@ -5,7 +5,7 @@ from PIL import Image
 from openai import OpenAI
 import re
 import random
-api_key = 'Add your API KEY'
+api_key =''
 client = OpenAI(api_key=api_key)
 API_URL1 = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
 API_URL2 = "https://api-inference.huggingface.co/models/cloudqi/cqi_text_to_image_pt_v0"
@@ -186,8 +186,6 @@ generate_keywords = True
 if keyword_selection == 'Automatic Generation':
     # Call the function for automatic keyword generation
     generate_keywords=True
-    #keywords = get_keywords_gpt(article,selected_audience,selected_content_type,selected_brand_voice,selected_subject_matter,selected_consistency)
-    #st.write("Automatic Keywords:", keywords)
 else:
     # Text input box for manual addition of keywords
     manual_keywords = st.text_input("Add your specific keywords separated by commas:")
@@ -195,7 +193,6 @@ else:
     # Process the manual_keywords string into a list of keywords (assuming comma-separated)
     manual_keywords_seperated = [keyword.strip() for keyword in manual_keywords.split(',')]
     generate_keywords=False
-    #st.write("Manually Added Keywords:", keywords)
 if generate_keywords==False:
     st.write(f"manual_keywords_seperated: {manual_keywords_seperated}")
 
@@ -210,7 +207,6 @@ def start(article,selected_audience,selected_content_type,selected_brand_voice,s
     st.title(f"{article}")
     
 
-    #st.markdown(f"# {article}")
 
     num_paragraphs ,num_images, image_positions = random_size(size)
     st.write(f'Your blog post will have {num_paragraphs} paragaraphs, {num_images} images and image positions are {image_positions}')
@@ -250,13 +246,12 @@ def start(article,selected_audience,selected_content_type,selected_brand_voice,s
             st.write(list_elements)
     
         if (i in image_positions) and (num_images !=0):
-            #st.write("Image must appear here")
             if header !='empty':
                 img = create_image(header)
                 st.image(img, caption=f'{header}')
             else:
                 random_keyword = random.choice(keywords)
-                img = create_image(random_keyword) # replace data with our value
+                img = create_image(random_keyword)
                 st.image(img, caption=f'{random_keyword}')#, use_column_width=True)
             num_images -=1
     conclusion = get_message_gpt(article,keywords,kind='conclusion',headers_lst = headers_lst,lst=False,
@@ -265,7 +260,6 @@ def start(article,selected_audience,selected_content_type,selected_brand_voice,s
                                     consistency=selected_consistency)
     st.markdown("## conclusion")
     st.write(conclusion)
-    #st.write(headers_lst)
 
 
 # Button to start the main function
