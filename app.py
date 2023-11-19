@@ -9,7 +9,7 @@ api_key = 'Add your API KEY'
 client = OpenAI(api_key=api_key)
 API_URL1 = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
 API_URL2 = "https://api-inference.huggingface.co/models/cloudqi/cqi_text_to_image_pt_v0"
-headers = {"Authorization": "Bearer **YOUR BEARER"}
+headers = {"Authorization": "Bearer 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"}
 
 st.set_page_config(
     page_title = 'Create your BLOG-POST',
