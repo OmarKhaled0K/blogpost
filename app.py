@@ -5,11 +5,11 @@ from PIL import Image
 from openai import OpenAI
 import re
 import random
-api_key ='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'
+api_key = 'Add your API KEY'
 client = OpenAI(api_key=api_key)
 API_URL1 = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
 API_URL2 = "https://api-inference.huggingface.co/models/cloudqi/cqi_text_to_image_pt_v0"
-headers = {"Authorization": "Bearer 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"}
+headers = {"Authorization": "Bearer **YOUR BEARER"}
 
 st.set_page_config(
     page_title = 'Create your BLOG-POST',
@@ -42,7 +42,7 @@ def get_message_gpt(article, keywords, kind='paragraph',headers_lst=headers_lst,
     if kind == 'paragraph':
         if lst:
             # Content for generating a paragraph with a numbered list
-            content = f"generate a paragraph for '{article}' blog post. Ensure it contains just one header and the header must not be one of {headers_lst}, and includes some of these keywords: {keywords}.The header must start the token '<H>' and end with token </H>. Place a numbered list somewhere in the paragraph, and the header of the list must start the token '<HL>' and end with token </HL>. Each list element should start the token '<LI>' and end with token </LI>. give me only the paragraph and the list don't return any other text rather that paragraph and the list."
+            content = f"generate a paragraph for '{article}' blog post. Ensure it contains just one header and the header must not be one of {headers_lst}, and includes some of these keywords: {keywords}.The header must start the token '<H>' and end with token </H>. Place a numbered list at the end of the paragraph make sure the list at the end of the paragraph, and the header of the list must start the token '<HL>' and end with token </HL>. Each list element should start the token '<LI>' and end with token </LI>. give me only the paragraph and the list don't return any other text rather that paragraph and the list."
         else:
             # Content for generating a plain paragraph
             content = f"generate a paragraph for '{article}' blog post. Ensure it contains just one header and the header must not be one of {headers_lst}, and includes some of these keywords: {keywords}. The header must start the token '<H>' and end with token </H>. give me only the paragraph don't return any other text rather that paragraph."
