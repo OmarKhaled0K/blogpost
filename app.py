@@ -58,6 +58,10 @@ def get_message_gpt(article, keywords, kind='paragraph',headers_lst=headers_lst,
     )
     # Extracting the generated content from the response
     generated_content = completion.choices[0].message.content
+
+    # Ensure consistent formatting of header and list tokens
+    generated_content = generated_content.replace("<hl>", "<HL>").replace("</hl>", "</HL>")
+    generated_content = generated_content.replace("<li>", "<LI>").replace("</li>", "</LI>")
     
     return generated_content
 
@@ -90,6 +94,7 @@ def split_content_list(input_paragraph):
         list_elements = [item.strip() for item in list_elements]
 
     else:
+        
         header = 'empty'
         rest_of_text_without_lists = input_paragraph
         list_header = 'empty'
